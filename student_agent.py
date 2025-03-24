@@ -5,10 +5,12 @@ import random
 import gym
 import pickle
 
-def load_q_table(filename="q_table_v1_24.pkl"):
+def load_q_table(filename="q_table.npz"):
   try:
     with open(filename, "rb") as f:
-      return pickle.load(f)
+        data = np.load(filename, allow_pickle=True)
+        q_table = {eval(key): data[key] for key in data}
+        return q_table
   except FileNotFoundError:
     print("No saved Q-table found, starting fresh!")
     return {}  # Return an empty Q-table if no file exists
