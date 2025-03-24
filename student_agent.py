@@ -5,7 +5,7 @@ import random
 import gym
 import pickle
 
-def load_q_table(filename="random10_table.pkl"):
+def load_q_table(filename="q_table_v1_24.pkl"):
   try:
     with open(filename, "rb") as f:
       return pickle.load(f)
